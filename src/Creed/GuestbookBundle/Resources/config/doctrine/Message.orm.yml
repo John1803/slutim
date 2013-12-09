@@ -1,0 +1,24 @@
+Creed\GuestbookBundle\Entity\Message:
+    type: entity
+    table: null
+    repositoryClass: Creed\GuestbookBundle\Entity\MessageRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        theme:
+            type: string
+            length: '100'
+        user:
+            type: string
+            length: '50'
+        email:
+            type: string
+            length: '50'
+        createdAt:
+            type: datetime
+        text:
+            type: text
+    lifecycleCallbacks: {  }

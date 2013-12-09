@@ -1,0 +1,4 @@
+creed_guestbook:
+    resource: "@CreedGuestbookBundle/Resources/config/routing.yml"
+    prefix:   /
+

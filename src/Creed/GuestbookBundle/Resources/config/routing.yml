@@ -1,0 +1,3 @@
+creed_guestbook_homepage:
+    pattern:  /hello
+    defaults: { _controller: CreedGuestbookBundle:Default:index }
