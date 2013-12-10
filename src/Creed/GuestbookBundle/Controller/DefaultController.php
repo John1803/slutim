@@ -8,6 +8,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('CreedGuestbookBundle:Default:index.html.twig');
+        $form = $this->createForm('message');
+        return $this->render('CreedGuestbookBundle:Default:index.html.twig', array('form' => $form->createView()));
     }
 }
