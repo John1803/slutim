@@ -1,3 +1,6 @@
-creed_guestbook_homepage:
+guestbook_homepage:
     pattern:  /form
     defaults: { _controller: CreedGuestbookBundle:Default:index }
+
+guestbook_all_messages:
+    pattern: /show/{id}

@@ -2,6 +2,17 @@ parameters:
 #    creed_guestbook.example.class: Creed\GuestbookBundle\Example
 
 services:
+    form.type.message:
+        class: Creed\GuestbookBundle\Form\Type\MessageType
+        tags:
+            - { name: form.type, alias: message }
+
+    creed_guestbook.pagination:
+        class: Creed\GuestbookBundle\PagePagination
+        arguments:
+            - @doctrine.orm.entity_manager
+        calls:
+            - [setPerPage, [10]]
 #    creed_guestbook.example:
 #        class: %creed_guestbook.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

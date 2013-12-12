@@ -8,6 +8,13 @@
         <service id="form.type.message" class="Creed\GuestbookBundle\Form\Type\MessageType">
             <tag name="form.type" alias="message" />
         </service>
+
+        <service id="creed_guestbook.pagination" class="Creed\GuestbookBundle\PagePagination">
+            <argument type="service" id="doctrine.orm.entity_manager"> </argument>
+            <call method="setPerPage">
+                <argument type="constant">10</argument>
+            </call>
+        </service>
     </services>
 
 </container>
