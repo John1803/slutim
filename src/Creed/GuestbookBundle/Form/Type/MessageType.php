@@ -14,7 +14,7 @@ class MessageType extends AbstractType
         $builder->add('theme', 'text')
             ->add('user', 'text')
             ->add('email', 'email')
-            ->add('createdAt', 'datetime')
+            ->add('createdAt', 'date')
             ->add('text', 'text')
             ->add('submit', 'submit');
     }

@@ -61,7 +61,7 @@
                 <div>{{ message.theme }} </div>
                 <div>{{ message.user }} </div>
                 <div>{{ message.email }} </div>
-                <div>{{ message.createdAt|date }} </div>
+                <div>{{ message.createdAt|date('m/d/Y') }} </div>
                 <div>{{ message.text }} </div>
             {% endfor %}
         </div>
