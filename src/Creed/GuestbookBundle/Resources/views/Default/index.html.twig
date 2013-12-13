@@ -56,6 +56,15 @@
 
             </div>
         </div>
+        <div>
+            {% for message in messages %}
+                <div>{{ message.theme }} </div>
+                <div>{{ message.user }} </div>
+                <div>{{ message.email }} </div>
+                <div>{{ message.createdAt|date }} </div>
+                <div>{{ message.text }} </div>
+            {% endfor %}
+        </div>
     </div>
 
     <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">

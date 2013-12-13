@@ -3,4 +3,5 @@ guestbook_homepage:
     defaults: { _controller: CreedGuestbookBundle:Default:index }
 
 guestbook_all_messages:
-    pattern: /show/{id}
+    pattern: /create
+    defaults: { _controller: CreedGuestbookBundle:Default:create }

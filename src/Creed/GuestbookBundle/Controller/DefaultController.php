@@ -12,13 +12,14 @@ class DefaultController extends Controller
         $messages = $this->get('creed_guestbook.pagination')->pagination($message);
 
         $form = $this->createForm('message');
+
         $form->handleRequest($this->getRequest());
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($form->getData());
             $em->flush();
 
-//            return $this->redirect($this->generateUrl('guestbook_all_messages'));
+            return $this->redirect($this->generateUrl('guestbook_homepage'));
         }
 
         return $this->render('CreedGuestbookBundle:Default:index.html.twig', array(
@@ -26,4 +27,5 @@ class DefaultController extends Controller
             'messages' => $messages,
         ));
     }
+
 }
