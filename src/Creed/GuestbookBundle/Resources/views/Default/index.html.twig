@@ -1,8 +1,5 @@
 {% extends 'CreedGuestbookBundle::layout.html.twig' %}
 
-
-
-
 {% block body %}
     <!-- Wrap all page content here -->
     <div id="wrap">
@@ -56,16 +53,15 @@
 
             </div>
         </div>
-        <div>
+
             {% for message in messages %}
                 <div>{{ message.theme }} </div>
                 <div>{{ message.user }} </div>
                 <div>{{ message.email }} </div>
                 <div>{{ message.createdAt|date('m/d/Y') }} </div>
-                <div>{{ message.text }} </div>
+                <div>{{ message.text|truncate(1, '...') }}</div>
+
             {% endfor %}
-        </div>
-    </div>
 
     <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
         <div class="container">
@@ -97,7 +93,7 @@
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
-        </div>
+
     </nav>
 
 
@@ -106,4 +102,5 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="../../assets/js/jquery.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
+    </div>
 {% endblock %}
