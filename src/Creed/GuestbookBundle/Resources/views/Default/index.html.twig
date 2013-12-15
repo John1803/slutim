@@ -1,100 +1,66 @@
 {% extends 'CreedGuestbookBundle::layout.html.twig' %}
 
 {% block body %}
-    <!-- Wrap all page content here -->
-    <div id="wrap">
-
-        <!-- Fixed navbar -->
-        <div class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Project name</a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
-        </div>
-
-        <!-- Begin page content -->
-        <div class="container">
-            <div class="page-header">
-
-            {{ form_start(form) }}
-                {{ form_errors(form) }}
-
-                {{ form_row(form.theme) }}
-                {{ form_row(form.user) }}
-                {{ form_row(form.email) }}
-                {{ form_row(form.createdAt) }}
-                {{ form_row(form.text) }}
-            {{ form_end(form) }}
-
-            </div>
-        </div>
-
-            {% for message in messages %}
-                <div>{{ message.theme }} </div>
-                <div>{{ message.user }} </div>
-                <div>{{ message.email }} </div>
-                <div>{{ message.createdAt|date('m/d/Y') }} </div>
-                <div>{{ message.text|truncate(1, '...') }}</div>
-
-            {% endfor %}
-
-    <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Project name</a>
+                {{ pagerfanta(messages) }}
+            </div><!--/.navbar-collapse -->
+        </div>
+    </div>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Hello, world!</h1>
+            <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-12">
+                {% block content -%}
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% for message in messages %}
+                                <div class="col-lg-12">{{ message.theme }}
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2"> {{ message.user }}
+                                    </div>
+                                    <div class="col-md-2"> {{ message.email }}
+                                    </div>
+                                    <div class="col-md-2"> {{ message.createdAt|date('Y-m-d') }}
+                                    </div>
+                                </div>
+                                    <p class="col-lg-12 well">{{ message.text|truncate(83, '...') }}</p>
+
+                                    <div class="btn-group">
+                                        <a class="btn btn-info" href="#">Show</a>
+                                        <a class="btn btn-danger" href="#">Delete</a>
+                                    </div>
+
+                                <hr/>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                {% endblock %}
             </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div><!--/.nav-collapse -->
         </div>
 
-    </nav>
+        <footer>
+            <div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+
+                    <h4 class="col-md-12 text-center"> {{ pagerfanta(messages) }}</h4>
+
+
+            </div>
+        </footer>
+    </div> <!-- /container -->
 
 
     <!-- Bootstrap core JavaScript
@@ -102,5 +68,4 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="../../assets/js/jquery.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
-    </div>
 {% endblock %}

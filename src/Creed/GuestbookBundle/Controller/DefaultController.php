@@ -3,6 +3,8 @@
 namespace Creed\GuestbookBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Pagerfanta;
 
 class DefaultController extends Controller
 {
