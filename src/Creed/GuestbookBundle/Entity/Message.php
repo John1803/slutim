@@ -3,6 +3,7 @@
 namespace Creed\GuestbookBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Message
@@ -25,6 +26,8 @@ class Message
      * @var string
      *
      * @ORM\Column(name="theme", type="string", length=100)
+     *
+     * @Assert\NotBlank()
      */
     private $theme;
 
@@ -32,6 +35,8 @@ class Message
      * @var string
      *
      * @ORM\Column(name="user", type="string", length=50)
+     *
+     * @Assert\NotBlank()
      */
     private $user;
 
@@ -39,6 +44,9 @@ class Message
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=50)
+     *
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 
@@ -53,6 +61,8 @@ class Message
      * @var string
      *
      * @ORM\Column(name="text", type="text")
+     * @Assert\NotBlank()
+     * @Assert\Length(min = "100")
      */
     private $text;
 
