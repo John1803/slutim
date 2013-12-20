@@ -67,6 +67,7 @@ class Message
     private $text;
 
 
+
     /**
      * Get id
      *
