@@ -59,7 +59,6 @@ class Message
      * @var string
      *
      * @ORM\Column(name="text", type="text")
-     * @Gedmo\Timestampable(on="create")
      */
     private $text;
 
