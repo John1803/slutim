@@ -3,7 +3,8 @@
 namespace Creed\GuestbookBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
+//use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Message
@@ -27,7 +28,6 @@ class Message
      *
      * @ORM\Column(name="theme", type="string", length=100)
      *
-     * @Assert\NotBlank()
      */
     private $theme;
 
@@ -36,7 +36,6 @@ class Message
      *
      * @ORM\Column(name="user", type="string", length=50)
      *
-     * @Assert\NotBlank()
      */
     private $user;
 
@@ -45,8 +44,6 @@ class Message
      *
      * @ORM\Column(name="email", type="string", length=50)
      *
-     * @Assert\NotBlank()
-     * @Assert\Email()
      */
     private $email;
 
@@ -54,6 +51,7 @@ class Message
      * @var \DateTime
      *
      * @ORM\Column(name="createdAt", type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
     private $createdAt;
 
@@ -61,11 +59,18 @@ class Message
      * @var string
      *
      * @ORM\Column(name="text", type="text")
-     * @Assert\NotBlank()
-     * @Assert\Length(min = "100")
+     * @Gedmo\Timestampable(on="create")
      */
     private $text;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     * @Gedmo\Slug(fields={"user"}, unique=true)
+     */
+
+    private $slug;
 
 
     /**
@@ -192,4 +197,27 @@ class Message
     {
         return $this->text;
     }
+
+    /**
+     * @param string $slug
+     *
+     * @return string
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    
 }
+
